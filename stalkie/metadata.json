@@ -1,0 +1,6 @@
+{
+  "name": "Stalkie",
+  "description": "An immersive found phone and cyber-detective simulation game. Solve cases by investigating chat history, photos, and apps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
