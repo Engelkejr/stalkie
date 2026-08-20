@@ -1,11 +1,11 @@
-package com.example.data
+﻿package com.example.data
 
 import com.example.model.*
 
 object StalkieCasesData {
 
     val allCases: List<CaseDefinition> = listOf(
-        // CASO 1: O Quarto Vazio
+
         CaseDefinition(
             id = 1,
             theme = "TRAIÇÃO AMOROSA",
@@ -123,7 +123,6 @@ object StalkieCasesData {
             )
         ),
 
-        // CASO 2: Sociedade Falida
         CaseDefinition(
             id = 2,
             theme = "TRAIÇÃO FINANCEIRA",
@@ -202,7 +201,7 @@ object StalkieCasesData {
                 geminiQueries = listOf(
                     GeminiQuery("Como formatar servidores remotamente sem deixar rastos", "Você precisaria de privilégios de administrador do sistema e rodar um script destrutivo.", "Hoje")
                 ),
-                employeeCode = "8192" // High score in 2048
+                employeeCode = "8192"
             ),
             steps = listOf(
                 CaseStep(1, "Qual é o nome da rede Wi-Fi conectada agora nas Configurações?", "Abra o aplicativo Configurações para conferir a rede conectada.", "Starbucks_Free", listOf("Starbucks_Free", "Office_Corporate", "Honeypot_Network", "Vivo_Fibra_92G"), "Dica: Fica em um café muito famoso."),
@@ -228,7 +227,6 @@ object StalkieCasesData {
             )
         ),
 
-        // CASO 3: Sangue do Meu Sangue
         CaseDefinition(
             id = 3,
             theme = "TRAIÇÃO FAMILIAR",
@@ -284,7 +282,7 @@ object StalkieCasesData {
                 geminiQueries = listOf(
                     GeminiQuery("Como reescrever PDF em editor photoshop sem deixar rastros digitais", "Use a ferramenta de carimbo para limpar metadados e manter camadas achatadas.", "Ontem")
                 ),
-                employeeCode = "0315" // Code to unlock Block Blast
+                employeeCode = "0315"
             ),
             steps = listOf(
                 CaseStep(1, "Qual foi a última música que ele ouviu no Spotify?", "Verifique a última reprodução de música no app Spotify.", "We Are The Champions", listOf("We Are The Champions", "Bohemian Rhapsody", "Sad Song No7", "Skyfall Theme"), "Dica: Hino vitorioso do Queen sobre ser campeão."),
@@ -310,7 +308,6 @@ object StalkieCasesData {
             )
         ),
 
-        // CASO 4: Falsa Autoria
         CaseDefinition(
             id = 4,
             theme = "TRAIÇÃO ACADÊMICA",
@@ -388,7 +385,6 @@ object StalkieCasesData {
             )
         ),
 
-        // CASO 5: O Padrinho
         CaseDefinition(
             id = 5,
             theme = "TRAIÇÃO DE AMIGO",
@@ -471,7 +467,6 @@ object StalkieCasesData {
         )
     )
 
-    // A list of 11 short profiles to represent the cases listing
     val dossierCasesList: List<DossierItem> = listOf(
         DossierItem(1, "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120", "O Quarto Vazio", "Alvo: Diego", "Carla (32)", "TRAIÇÃO AMOROSA"),
         DossierItem(2, "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120", "Sociedade Falida", "Alvo: Marcos", "Beto (28)", "TRAIÇÃO FINANCEIRA"),
@@ -486,12 +481,10 @@ object StalkieCasesData {
         DossierItem(11, "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=120", "O Culto do Eclipse", "Alvo: Membro Anônimo", "Det. Silva (Polícia)", "SUSPENSE E MISTÉRIO")
     )
 
-    // Fallback cases generator for cases 6..11 to populate steps cleanly if they play them
     fun getOrGenerateCase(id: Int): CaseDefinition {
         val found = allCases.find { it.id == id }
         if (found != null) return found
 
-        // Dynamic generation for cases 6 to 11 to keep code footprint compact yet highly functional and fully playable
         return when (id) {
             6 -> generateCase6()
             7 -> generateCase7()
@@ -599,7 +592,7 @@ object StalkieCasesData {
     private fun generateCase11(): CaseDefinition = createFallbackCase(11, "O Culto do Eclipse", "SUSPENSE", "Culto", "Eclipse Solar Total.", "777", "O Guia da Passagem")
 
     private fun createFallbackCase(id: Int, title: String, theme: String, target: String, ans1: String, ans2: String, ans3: String): CaseDefinition {
-        // Simple elegant generator to yield the same structural format representing 11 cases fully playable
+
         return CaseDefinition(
             id = id,
             theme = theme,

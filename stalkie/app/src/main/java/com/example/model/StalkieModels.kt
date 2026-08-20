@@ -1,14 +1,14 @@
-package com.example.model
+﻿package com.example.model
 
 import androidx.compose.runtime.Composable
 
 data class CaseStep(
-    val stepNum: Int,             // 1 to 20
-    val question: String,         // E.g., "Qual foi a última compra no Apple Pay?"
-    val actionNeeded: String,      // Hint of action, e.g., "Abra o Apple Pay para checar."
-    val correctAnswer: String,     // E.g., "La Table" or "Restaurante 'La Table'"
-    val options: List<String>,     // 4 multiple-choice options for polished mobile-friendly deduction UI
-    val hint: String               // Cheat/Clue if the player gets stuck
+    val stepNum: Int,
+    val question: String,
+    val actionNeeded: String,
+    val correctAnswer: String,
+    val options: List<String>,
+    val hint: String
 )
 
 data class ChatMessage(
@@ -30,12 +30,12 @@ data class WhatsAppChat(
 
 data class GalleryPhoto(
     val id: Int,
-    val imageDescription: String, // Textual/Emoji visual representation
+    val imageDescription: String,
     val details: String,
     val isDeleted: Boolean = false,
     val isFavorite: Boolean = false,
     val requiresPin: Boolean = false,
-    val vectorResType: String = "default" // "porsche", "screenshot", "testamento", "selfie", etc.
+    val vectorResType: String = "default"
 )
 
 data class WalletTransaction(
@@ -84,7 +84,7 @@ data class GeminiQuery(
 )
 
 data class CasePhoneData(
-    val wallpaperType: String, // E.g., "porsche", "dog", "college", "sunset"
+    val wallpaperType: String,
     val wifiNetwork: String = "Starbucks_Free",
     val batteryPct: Int = 85,
     val currentNetworkTime: String = "14:20",
@@ -109,10 +109,10 @@ data class CasePhoneData(
 
 data class CaseDefinition(
     val id: Int,
-    val theme: String, // E.g., "TRAIÇÃO AMOROSA"
-    val title: String, // E.g., "O Quarto Vazio"
-    val clientName: String, // E.g., "Carla (32, Médica)"
-    val targetName: String, // E.g., "Diego"
+    val theme: String,
+    val title: String,
+    val clientName: String,
+    val targetName: String,
     val clientBriefingMessages: List<String>,
     val phoneData: CasePhoneData,
     val steps: List<CaseStep>
@@ -120,13 +120,13 @@ data class CaseDefinition(
 
 data class GameState(
     val currentCaseId: Int? = null,
-    val currentScreen: String = "menu", // "menu", "intro", "os"
-    val unlockedCaseIds: Set<Int> = setOf(1), // Starts with Case 1 unlocked
+    val currentScreen: String = "menu",
+    val unlockedCaseIds: Set<Int> = setOf(1),
     val completedCaseIds: Set<Int> = emptySet(),
-    val currentStepIndex: Int = 0, // 0 to 19 (for Step 1 to 20)
-    val activeApp: String? = null, // null, "whatsapp", "photos", "wallet", "gmail", "notes", "tinder", "maps", "gemini", "settings", "calculator", "game2048", "snake", "blockblast", "brickbreaker"
+    val currentStepIndex: Int = 0,
+    val activeApp: String? = null,
     val isOverlayOpen: Boolean = false,
     val wrongAttempts: Int = 0,
-    val scoreHintPennies: Int = 50, // Starting currency/credits
+    val scoreHintPennies: Int = 50,
     val showCheatConfirm: Boolean = false
 )

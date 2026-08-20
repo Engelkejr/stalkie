@@ -1,4 +1,4 @@
-package com.example.ui
+﻿package com.example.ui
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
@@ -44,14 +44,13 @@ import com.example.model.*
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-// Cyber palette for Hacker Desk
-val HackerBlack = Color(0xFF1A1C1E) // Immersive background color
-val HackerCardBg = Color(0xFF2D2E33) // Immersive card/dock color
-val ImmersiveRed = Color(0xFFBA1A1A) // Immersive solve action color
+val HackerBlack = Color(0xFF1A1C1E)
+val HackerCardBg = Color(0xFF2D2E33)
+val ImmersiveRed = Color(0xFFBA1A1A)
 val NeonRed = Color(0xFFFF2E4C)
 val NeonGreen = Color(0xFF2FFF2F)
 val NeonBlue = Color(0xFF2FDFFF)
-val SubtextGray = Color(0xFFA8ABB4) // Immersive slate gray/subtext
+val SubtextGray = Color(0xFFA8ABB4)
 
 @Composable
 fun StalkieGameRoot() {
@@ -100,7 +99,6 @@ fun StalkieGameRoot() {
     }
 }
 
-// ----------------- 1. DETECTIVE DESK SCREEN (MENU) -----------------
 @Composable
 fun DetectiveDeskScreen(
     state: GameState,
@@ -112,7 +110,7 @@ fun DetectiveDeskScreen(
             .statusBarsPadding()
             .padding(16.dp)
     ) {
-        // Holographic Logo
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -163,7 +161,6 @@ fun DetectiveDeskScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Cyber Grid Indicator / Prompt help
         Card(
             colors = CardDefaults.cardColors(containerColor = HackerCardBg),
             modifier = Modifier
@@ -242,7 +239,7 @@ fun DetectiveDeskScreen(
                                 .padding(12.dp)
                                 .fillMaxWidth()
                         ) {
-                            // Target / Client Avatar Mock
+
                             Box(
                                 modifier = Modifier
                                     .size(64.dp)
@@ -310,7 +307,7 @@ fun DetectiveDeskScreen(
                         }
 
                         if (!isUnlocked) {
-                            // Locked glass overlay
+
                             Box(
                                 modifier = Modifier
                                     .matchParentSize()
@@ -334,7 +331,6 @@ fun DetectiveDeskScreen(
     }
 }
 
-// ----------------- 2. BRIEFING CHAT SCREEN (CLIENT CHAT) -----------------
 @Composable
 fun BriefingScreen(
     case: CaseDefinition,
@@ -348,7 +344,7 @@ fun BriefingScreen(
         renderedMessages.clear()
         for (msg in case.clientBriefingMessages) {
             isTyping = true
-            delay(1200) // typing simulation
+            delay(1200)
             isTyping = false
             renderedMessages.add(msg)
             delay(500)
@@ -495,7 +491,6 @@ fun BriefingScreen(
     }
 }
 
-// ----------------- 3. VIRTUAL OS SCREEN (SMARTPHONE EMULATOR) -----------------
 @Composable
 fun VirtualOsScreen(
     case: CaseDefinition,
@@ -513,14 +508,14 @@ fun VirtualOsScreen(
             .fillMaxSize()
             .background(HackerBlack)
     ) {
-        // Outer Smartphone Container Bezel
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Target Phone Display
+
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -530,13 +525,13 @@ fun VirtualOsScreen(
                     .border(6.dp, Color(0xFF1E1E28), RoundedCornerShape(32.dp))
                     .clip(RoundedCornerShape(26.dp))
             ) {
-                // Screen Box containing topnotch dynamic island
+
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Black)
                 ) {
-                    // Phone Wallpaper
+
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
@@ -553,11 +548,10 @@ fun VirtualOsScreen(
                             )
                     )
 
-                    // Virtual Phone content according to state.activeApp
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(top = 40.dp) // Gap for Dynamic Island & Status Bar
+                            .padding(top = 40.dp)
                     ) {
                         if (state.activeApp == null) {
                             PhoneHomeScreen(case = case, onOpenApp = { app ->
@@ -602,7 +596,6 @@ fun VirtualOsScreen(
                         }
                     }
 
-                    // Dynamic Island Notch at Center Top
                     Box(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
@@ -623,7 +616,6 @@ fun VirtualOsScreen(
                         )
                     }
 
-                    // Top Bezel Status bar items
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -657,7 +649,6 @@ fun VirtualOsScreen(
                 }
             }
 
-            // Detective Hub (Floating Bottom Bar)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -674,7 +665,7 @@ fun VirtualOsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Home / Back
+
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
@@ -700,7 +691,6 @@ fun VirtualOsScreen(
                         )
                     }
 
-                    // Progress Info
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Box(
                             modifier = Modifier
@@ -743,7 +733,6 @@ fun VirtualOsScreen(
                         }
                     }
 
-                    // Respond Action
                     Button(
                         onClick = {
                             onUpdateState(state.copy(isOverlayOpen = true))
@@ -779,7 +768,6 @@ fun VirtualOsScreen(
                 }
             }
 
-            // Bottom Indicator
             Box(
                 modifier = Modifier
                     .padding(bottom = 4.dp)
@@ -790,7 +778,6 @@ fun VirtualOsScreen(
             )
         }
 
-        // Animated Pulse Badge: Terminal Link Active
         Box(
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -823,7 +810,6 @@ fun VirtualOsScreen(
             }
         }
 
-        // Camada 3: Resolving Overlay Slide up occupying 85% of screen
         if (state.isOverlayOpen) {
             Box(
                 modifier = Modifier
@@ -846,7 +832,7 @@ fun VirtualOsScreen(
                             .fillMaxSize()
                             .padding(20.dp)
                     ) {
-                        // Title
+
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
@@ -866,7 +852,6 @@ fun VirtualOsScreen(
 
                         Spacer(modifier = Modifier.height(10.dp))
 
-                        // Progress Dots
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -890,7 +875,6 @@ fun VirtualOsScreen(
 
                         Spacer(modifier = Modifier.height(15.dp))
 
-                        // Question Bubble
                         Card(
                             colors = CardDefaults.cardColors(containerColor = Color(0xFF1B1B26)),
                             modifier = Modifier.fillMaxWidth()
@@ -935,7 +919,6 @@ fun VirtualOsScreen(
                             modifier = Modifier.padding(bottom = 8.dp)
                         )
 
-                        // 4 Interactive options (Tappable multiple choices represent deductions)
                         Column(
                             verticalArrangement = Arrangement.spacedBy(10.dp),
                             modifier = Modifier.weight(1f)
@@ -948,11 +931,11 @@ fun VirtualOsScreen(
                                     onClick = {
                                         if (isCorrectOption) {
                                             if (state.currentStepIndex >= 19) {
-                                                // Case completed!
+
                                                 onUpdateState(
                                                     state.copy(
                                                         completedCaseIds = state.completedCaseIds + case.id,
-                                                        unlockedCaseIds = state.unlockedCaseIds + (case.id + 1), // unlock next case!
+                                                        unlockedCaseIds = state.unlockedCaseIds + (case.id + 1),
                                                         currentScreen = "menu",
                                                         currentCaseId = null,
                                                         isOverlayOpen = false,
@@ -1022,7 +1005,6 @@ fun VirtualOsScreen(
                             }
                         }
 
-                        // Bottom Action: Clue assistance & Skip
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
@@ -1047,7 +1029,6 @@ fun VirtualOsScreen(
                                 }
                             }
 
-                            // Easy cheat button for rapid testing/development or skip stump
                             TextButton(
                                 onClick = {
                                     if (state.currentStepIndex >= 19) {
@@ -1079,7 +1060,6 @@ fun VirtualOsScreen(
             }
         }
 
-        // Custom clue pop-up
         if (state.showCheatConfirm) {
             AlertDialog(
                 onDismissRequest = { onUpdateState(state.copy(showCheatConfirm = false)) },
@@ -1095,7 +1075,6 @@ fun VirtualOsScreen(
     }
 }
 
-// ----------------- 4. TARGET HOME SCREEN (APP GRID) -----------------
 @Composable
 fun PhoneHomeScreen(case: CaseDefinition, onOpenApp: (String) -> Unit) {
     Column(
@@ -1105,11 +1084,10 @@ fun PhoneHomeScreen(case: CaseDefinition, onOpenApp: (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        // App Grid (4 Columns)
+
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Grid items
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
@@ -1134,7 +1112,6 @@ fun PhoneHomeScreen(case: CaseDefinition, onOpenApp: (String) -> Unit) {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Games & Aux section
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
@@ -1156,7 +1133,6 @@ fun PhoneHomeScreen(case: CaseDefinition, onOpenApp: (String) -> Unit) {
             }
         }
 
-        // Floating quick widgets summary
         Card(
             colors = CardDefaults.cardColors(containerColor = Color.Black.copy(alpha = 0.5f)),
             modifier = Modifier
@@ -1223,9 +1199,6 @@ fun HomeScreenIcon(
     }
 }
 
-// ----------------- EMULATED COMPONENT APPS -----------------
-
-// 1. WHATSAPP
 @Composable
 fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
     var inChatContact by remember { mutableStateOf<WhatsAppChat?>(null) }
@@ -1237,7 +1210,7 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
                 .fillMaxSize()
                 .background(Color(0xFF121B22))
         ) {
-            // Header
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1256,7 +1229,6 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
                 Icon(imageVector = Icons.Default.Search, contentDescription = "Search", tint = Color.White)
             }
 
-            // Archived Toggle
             Card(
                 onClick = { showArchived = !showArchived },
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF1F2C34)),
@@ -1285,7 +1257,6 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
 
-            // Chat lists
             val visibleChats = case.phoneData.whatsappChats.filter { it.isArchived == showArchived }
 
             LazyColumn(modifier = Modifier.weight(1f)) {
@@ -1339,7 +1310,7 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
     } else {
-        // Individual chat open
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -1347,7 +1318,6 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
         ) {
             val contact = inChatContact!!
 
-            // Chat Header
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1374,7 +1344,6 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
 
-            // Message Bubble list
             LazyColumn(
                 modifier = Modifier
                     .weight(1f)
@@ -1415,11 +1384,10 @@ fun EmulatedWhatsApp(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 2. PHOTOS (GALERIA)
 @Composable
 fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
     var selectedPhoto by remember { mutableStateOf<GalleryPhoto?>(null) }
-    var activeTab by remember { mutableStateOf("fototeca") } // "fototeca", "albuns"
+    var activeTab by remember { mutableStateOf("fototeca") }
     var enteredPin by remember { mutableStateOf("") }
     var pinAccepted by remember { mutableStateOf(false) }
 
@@ -1428,7 +1396,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
             .fillMaxSize()
             .background(Color.Black)
     ) {
-        // App top header
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -1448,7 +1416,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
 
         if (selectedPhoto == null) {
             if (activeTab == "fototeca") {
-                // Photos Grid
+
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(3),
                     modifier = Modifier.weight(1f),
@@ -1482,7 +1450,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                     }
                 }
             } else {
-                // Albums tab
+
                 Column(
                     modifier = Modifier
                         .weight(1f)
@@ -1490,7 +1458,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     AlbumRow("Itens Deletados (Lixeira)", Icons.Default.Delete, Colors = Color.Red) {
-                        // Open Deleted Folder directly
+
                         selectedPhoto = case.phoneData.galleryPhotos.find { it.isDeleted }
                     }
 
@@ -1500,7 +1468,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                         if (pinAccepted) {
                             selectedPhoto = case.phoneData.galleryPhotos.find { it.requiresPin }
                         } else {
-                            // prompt PIN
+
                             activeTab = "pins_required"
                         }
                     }
@@ -1508,7 +1476,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
             }
 
             if (activeTab == "pins_required") {
-                // PIN pad overlay inside gallery
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -1525,7 +1493,6 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    // Simple 3x4 numeric keypad
                     val rows = listOf(
                         listOf("1", "2", "3"),
                         listOf("4", "5", "6"),
@@ -1570,7 +1537,6 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
 
-            // Bottom Navigation tabs of gallery
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1592,7 +1558,7 @@ fun EmulatedPhotos(case: CaseDefinition, onBack: () -> Unit) {
                 )
             }
         } else {
-            // Fullscreen Photo Open
+
             val photo = selectedPhoto!!
             Column(
                 modifier = Modifier
@@ -1656,7 +1622,6 @@ fun AlbumRow(label: String, icon: ImageVector, Colors: Color, onClick: () -> Uni
     }
 }
 
-// 3. WALLET (APPLE PAY)
 @Composable
 fun EmulatedWallet(case: CaseDefinition, onBack: () -> Unit) {
     var selectedCardIndex by remember { mutableStateOf<Int?>(null) }
@@ -1681,13 +1646,12 @@ fun EmulatedWallet(case: CaseDefinition, onBack: () -> Unit) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Cascade Credit Cards effects
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(180.dp)
         ) {
-            // First Card background overlapping
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1704,7 +1668,6 @@ fun EmulatedWallet(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
 
-            // Foreground Card
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1769,7 +1732,6 @@ fun EmulatedWallet(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 4. GMAIL
 @Composable
 fun EmulatedGmail(case: CaseDefinition, onBack: () -> Unit) {
     var openEmail by remember { mutableStateOf<GmailMessage?>(null) }
@@ -1780,7 +1742,7 @@ fun EmulatedGmail(case: CaseDefinition, onBack: () -> Unit) {
                 .fillMaxSize()
                 .background(Color.White)
         ) {
-            // Gmail Red top bar
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1830,7 +1792,7 @@ fun EmulatedGmail(case: CaseDefinition, onBack: () -> Unit) {
                 .fillMaxSize()
                 .background(Color.White)
         ) {
-            // Header
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -1872,7 +1834,6 @@ fun EmulatedGmail(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 5. NOTES (NOTAS)
 @Composable
 fun EmulatedNotes(case: CaseDefinition, onBack: () -> Unit) {
     var openNote by remember { mutableStateOf<NoteEntry?>(null) }
@@ -1883,7 +1844,7 @@ fun EmulatedNotes(case: CaseDefinition, onBack: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFFEF9E7)) // paper color style
+                .background(Color(0xFFFEF9E7))
         ) {
             Row(
                 modifier = Modifier
@@ -1942,7 +1903,7 @@ fun EmulatedNotes(case: CaseDefinition, onBack: () -> Unit) {
     } else {
         val note = openNote!!
         if (inAuthLockFlow) {
-            // PIN entry screen
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -2004,7 +1965,7 @@ fun EmulatedNotes(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
         } else {
-            // Note Display Content
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -2025,7 +1986,6 @@ fun EmulatedNotes(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 6. TINDER / HINGE (MOCK CARD INTERFACE)
 @Composable
 fun EmulatedTinder(case: CaseDefinition, onBack: () -> Unit) {
     var swipeMatched by remember { mutableStateOf(false) }
@@ -2033,7 +1993,7 @@ fun EmulatedTinder(case: CaseDefinition, onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF0F0015)) // Purple vibe Hinge style
+            .background(Color(0xFF0F0015))
             .padding(16.dp)
     ) {
         Row(
@@ -2099,7 +2059,6 @@ fun EmulatedTinder(case: CaseDefinition, onBack: () -> Unit) {
                         )
                     }
 
-                    // Matching chats log view directly for easy finding
                     Column {
                         Text(
                             text = "DIÁLOGO RECENTE (HINGE DATA ENCRYPT):",
@@ -2134,7 +2093,6 @@ fun EmulatedTinder(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 7. GOOGLE MAPS NODE藍圖
 @Composable
 fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
     var selectedPin by remember { mutableStateOf<MapPinDefinition?>(null) }
@@ -2142,7 +2100,7 @@ fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1E2836)) // Blueprint blue background maps
+            .background(Color(0xFF1E2836))
     ) {
         Row(
             modifier = Modifier
@@ -2158,13 +2116,12 @@ fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
             Icon(imageVector = Icons.Default.Place, contentDescription = "Loc", tint = Color.White)
         }
 
-        // Custom canvas displaying network map connections
         Box(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
                 .drawBehind {
-                    // Blueprint grid effect in background
+
                     val gridSpacing = 40.dp.toPx()
                     for (x in 0..size.width.toInt() step gridSpacing.toInt()) {
                         drawLine(
@@ -2184,7 +2141,7 @@ fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
                     }
                 }
         ) {
-            // Interactive Pins placed random-controlled or specific
+
             case.phoneData.mapPins.forEachIndexed { index, pin ->
                 val xPos = if (index == 0) 100.dp else 220.dp
                 val yPos = if (index == 0) 180.dp else 280.dp
@@ -2205,7 +2162,6 @@ fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
                 }
             }
 
-            // Display selected Pin attributes in nice bottom overlay sheet
             selectedPin?.let { pin ->
                 Card(
                     colors = CardDefaults.cardColors(containerColor = HackerCardBg),
@@ -2237,7 +2193,6 @@ fun EmulatedMaps(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 8. GEMINI AI PROMPT INTEGRATED
 @Composable
 fun EmulatedGemini(case: CaseDefinition, onBack: () -> Unit) {
     Column(
@@ -2259,7 +2214,6 @@ fun EmulatedGemini(case: CaseDefinition, onBack: () -> Unit) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Large Purple Glowing banner
         Card(
             colors = CardDefaults.cardColors(containerColor = Color(0xFF231B42)),
             modifier = Modifier
@@ -2306,7 +2260,6 @@ fun EmulatedGemini(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 9. SETTINGS
 @Composable
 fun EmulatedSettings(case: CaseDefinition, onBack: () -> Unit) {
     Column(
@@ -2356,14 +2309,13 @@ fun HorizontalSettingRow(label: String, valuel: String, icon: ImageVector) {
     }
 }
 
-// 10. CALCULATOR DETECTOR (VAULT)
 @Composable
 fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
     var calcInput by remember { mutableStateOf("") }
     var cofreAberto by remember { mutableStateOf(false) }
 
     if (cofreAberto) {
-        // Displays Vault files once correctly entered highscore 8192 or 4099 code!
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -2390,7 +2342,6 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Display case specific private prints
             if (case.id == 2) {
                 Card(colors = CardDefaults.cardColors(containerColor = HackerCardBg), modifier = Modifier.fillMaxWidth().border(1.dp, NeonRed)) {
                     Column(modifier = Modifier.padding(14.dp)) {
@@ -2412,7 +2363,7 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
     } else {
-        // Calculator Standard Numeric UI
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -2427,7 +2378,6 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            // Math indicator display panel
             Text(
                 text = if (calcInput.isEmpty()) "0" else calcInput,
                 color = Color.White,
@@ -2438,7 +2388,6 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
                     .padding(16.dp)
             )
 
-            // Calculator Rows Grid
             val rows = listOf(
                 listOf("7", "8", "9", "/"),
                 listOf("4", "5", "6", "*"),
@@ -2457,7 +2406,7 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
                                 when (char) {
                                     "C" -> calcInput = ""
                                     "=" -> {
-                                        // Specific vault unlocking
+
                                         if (calcInput.contains("8192") || calcInput.contains("4099")) {
                                             cofreAberto = true
                                         } else {
@@ -2488,7 +2437,6 @@ fun EmulatedCalculator(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 11. MINI GAME: 2048 PLAYABLE EXCELLENCE
 @Composable
 fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
     var score by remember { mutableStateOf(0) }
@@ -2497,7 +2445,7 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFAF8EF)) // beige styling of 2048
+            .background(Color(0xFFFAF8EF))
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -2516,7 +2464,6 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Score Dashboard
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
@@ -2537,7 +2484,6 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Playboard Grid Mock
             Box(
                 modifier = Modifier
                     .size(260.dp)
@@ -2566,7 +2512,6 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
 
-        // Easter Egg popup triggers
         showEasterEggMsg?.let { msg ->
             Card(
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF8D6E63)),
@@ -2582,7 +2527,6 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
 
-        // Incrementor trigger mechanics
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Button(
                 onClick = {
@@ -2603,7 +2547,6 @@ fun Emulated2048Game(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 12. MINI GAME: SNAKE (COBRA CLÁSSICO BRUTALIST)
 @Composable
 fun EmulatedSnakeGame(case: CaseDefinition, onBack: () -> Unit) {
     var score by remember { mutableStateOf(0) }
@@ -2629,7 +2572,6 @@ fun EmulatedSnakeGame(case: CaseDefinition, onBack: () -> Unit) {
             Text("SNAKE COBRA VAULT", color = Color.Green, fontWeight = FontWeight.Bold, fontSize = 16.sp, fontFamily = FontFamily.Monospace)
         }
 
-        // Visual board representing snake
         Box(
             modifier = Modifier
                 .size(220.dp)
@@ -2661,12 +2603,11 @@ fun EmulatedSnakeGame(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
 
-        // Interface controls triggers target locks
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 Button(
                     onClick = {
-                        // Case 4: Lose 3 times with 0 points
+
                         failCount++
                         score = 0
                         if (failCount >= 3 && case.id == 4) {
@@ -2682,7 +2623,7 @@ fun EmulatedSnakeGame(case: CaseDefinition, onBack: () -> Unit) {
 
                 Button(
                     onClick = {
-                        // Case 8: Come 3 maçãs vermelhas e bate na parede direita
+
                         score = 3
                         if (case.id == 8) {
                             gameCompletedStatus = "CERTIDÃO REVELADA:\nCópias das certidões de nascimento do Júnior com nome do Roberto como pai!"
@@ -2698,7 +2639,6 @@ fun EmulatedSnakeGame(case: CaseDefinition, onBack: () -> Unit) {
     }
 }
 
-// 13. MINI GAME: BRICKBREAKER (BREAKOUT RETRO MECHANICALS)
 @Composable
 fun EmulatedBrickBreaker(case: CaseDefinition, onBack: () -> Unit) {
     var ballStatus by remember { mutableStateOf("Em jogo") }
@@ -2723,7 +2663,6 @@ fun EmulatedBrickBreaker(case: CaseDefinition, onBack: () -> Unit) {
             Text("BRICKBREAKER STALKIE", color = NeonBlue, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace)
         }
 
-        // Game canvas simulator
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -2755,10 +2694,9 @@ fun EmulatedBrickBreaker(case: CaseDefinition, onBack: () -> Unit) {
             }
         }
 
-        // Play Control actions
         Button(
             onClick = {
-                // Case 6: Lose immediately ball fall down
+
                 ballStatus = "Perdeu a bola imediato"
                 if (case.id == 6) {
                     resultText = "CONTATO DE EMERGÊNCIA OCULTO REVELADO:\nInspetor Torres - Proteção a Testemunhas"
